@@ -1,0 +1,11 @@
+filebeat.prospectors:
+- type: log
+  paths:
+    - ./nyc_collision/nyc_collision_data.csv
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  index: nyc_visionzero
+  pipeline: nyc_collision
+
+setup.template.enabled: false

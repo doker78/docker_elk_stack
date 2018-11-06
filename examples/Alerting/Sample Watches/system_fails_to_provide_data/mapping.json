@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "host": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

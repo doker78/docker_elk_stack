@@ -1,0 +1,158 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>&lt;no title&gt; &#8212; docker_elk_stack 1.0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>Welcome to docker_elk_stack’s documentation!</p>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+<p>Docker and webapp with ELK</p>
+<p>It is based on the following componnents:</p>
+<p>Elasticsearch, search engine which provide full text search &amp; analytics
+Logstash, an ETL for retrieving data from heterogeneous sources, transforming them and sending them to Elasticsearch
+Kibana, which provide an UI for exploring data, and create interactive dashboards
+Redis, an upstream broker which will serve as buffer in case of latency of the system, while avoiding excessive congestion in case of a peak
+Curator, a tool to manage our index
+Beats, client-side agent to send the logs/metrics to our stack</p>
+<p>List of containers version for each stack component</p>
+<p>Elasticsearch (6.3.2)
+Logstash (6.3.2),
+Kibana (6.3.2),
+Redis (latest),
+Curator (latest)</p>
+<p>Build with docker-compose</p>
+<dl class="docutils">
+<dt>build the images</dt>
+<dd><blockquote class="first">
+<div>docker-compose build</div></blockquote>
+<p class="last">Run with docker-compose</p>
+</dd>
+<dt>run stack added -d for daemon mode</dt>
+<dd>docker-compose up -d</dd>
+<dt>inspect the logs</dt>
+<dd><blockquote class="first">
+<div>docker-compose logs -f</div></blockquote>
+<p>Access kibana for view status after successfully set up</p>
+<blockquote>
+<div><a class="reference external" href="http://KIBANA_HOST:5061">http://KIBANA_HOST:5061</a></div></blockquote>
+<p>Build and Run the webapp and let to Kibana monitoring</p>
+<blockquote>
+<div><p>docker build ./webapp -t dockerelkstack_webapp
+docker run –network dockerelkstack_logging –link redis:redis -p 80:80 -d –name webapp dockerelkstack_webapp</p>
+<p>It’s possible to automatically restart crashed containers by specifying a restart policy when initiating the container
+–restart always</p>
+</div></blockquote>
+<p class="last">docker run –network dockerelkstack_logging –restart always –link redis:redis -p 80:80 -d –name webapp dockerelkstack_webapp</p>
+</dd>
+<dt>Joli is a free admin template/Dashboard/Web App based on Angular JS</dt>
+<dd><p class="first">Then navigate on the site [AdminUI](<a class="reference external" href="http://localhost">http://localhost</a>) port 80 for Access to Joli Admin UI</p>
+<p>Index management with Curator after ELK is UP</p>
+<blockquote>
+<div>docker run –network dockerelkstuck_logging –link elastic:elasticsearch -v “./curator/config”:/config –rm bobrik/curator:latest –config /config/config.yml /config/actions.yml</div></blockquote>
+<p>After few minutes browsing, returning to Kibana
+An index is now available</p>
+<p class="last">After creating index, we can now exploring our web app logs (Discover tab)
+Create visualizations (Visualize tab) and dashboards (Dashboard tab)</p>
+</dd>
+</dl>
+<p>Docs build status
+Documentation Status</p>
+<p>Travis-ci.org</p>
+<p>CI/CD with Codefresh</p>
+<p>Docker Hub</p>
+<p>DockerHub_repository</p>
+<p>Docker Automated build</p>
+<p>Monitoring Dockers</p>
+<p>Docker Registry Front-End</p>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">docker_elk_stack</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Boris Shkarupelov.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.7</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

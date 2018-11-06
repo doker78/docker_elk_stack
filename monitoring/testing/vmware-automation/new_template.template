@@ -1,0 +1,14 @@
+[
+	{
+	"name":"vm_1",
+	"type":"Desktop",
+	"cpu":"1",
+	"mem":"1"
+	}
+	{
+	"name":"vm_2",
+	"type":"Database",
+	"cpu":"1",
+	"mem":"1"
+	}
+]

@@ -1,0 +1,15 @@
+cffi
+cryptography
+elasticsearch
+elasticsearch-xpack
+idna
+lxml
+ndg-httpsclient
+ordereddict
+protobuf
+pyasn1
+pycparser
+pyOpenSSL
+simplejson
+six
+urllib3
