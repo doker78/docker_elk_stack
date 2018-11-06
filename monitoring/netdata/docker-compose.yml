@@ -1,4 +1,4 @@
-version: '3'
+version: '3.2'
 services:
   netdata:
     image: netdata/netdata
@@ -14,7 +14,7 @@ services:
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
   prometheus:
-    image: quay.io/prometheus/prometheus:v2.0.0
+    image: prom/prometheus:latest
     volumes:
      - ./monitor/prometheus.yml:/etc/prometheus/prometheus.yml
     command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
@@ -32,4 +32,4 @@ services:
     ports:
      - "3000:3000"
     depends_on:
-      - prom
+      - prometheus
