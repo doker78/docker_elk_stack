@@ -15,14 +15,14 @@
 #### Contents
 
 - [Quick start](#quick-start---list-of-containers-version)
-- [Build Images](#build-images)
-- [Run with Compose](#run-with-docker-compose)
-- [Access Kibana](#access-kibana-for-view-status-after-successfully-set-up)
-- [Build and Run Webapp](#build-and-run-the-webapp-and-let-to-kibana-monitoring)
-- [Curator Indexing](#curator-indexing-on-elk)
-- [Docs](#docs-build-status)
-- [Travis-Ci](#-travis-ci)
-- [CI-CD Codefresh](#-codefresh)
+- [Go Build Images](#build-images)
+- [Go with Compose](#run-with-docker-compose)
+- [Access to Kibana](#access-kibana-for-view-status-after-successfully-set-up)
+- [Build and Run nginx Webapp](#build-and-run-the-webapp-and-let-to-kibana-monitoring)
+- [Curator ELK Indexing](#curator-indexing-on-elk)
+- [Read the Docs](#docs-build-status)
+- [CI with Travis-Ci](#-travis-ci)
+- [CD with Codefresh](#-codefresh)
 - [Docker Hub](#-dockerhub)
 - [Front End](#-front-end-for-docker-registry)
 
@@ -35,7 +35,7 @@
 [![Build Status](https://travis-ci.org/doker78/docker_elk_stack.svg?branch=master)](https://travis-ci.org/doker78/docker_elk_stack)
  
    
-#### [<img src="https://codefresh.io//wp-content/themes/codefresh/images/favicon.ico" width="18"> Codefresh](https://codefresh.io/)  
+#### [<img src="https://codefresh.io//wp-content/themes/codefresh/images/favicon.ico" width="18"> Codefresh](https://g.codefresh.io/public/accounts/doker78/pipelines/doker78/docker_elk_stack/docker_elk_stack)  
 [![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/doker78/doker78%2Fdocker_elk_stack%2Fdocker_elk_stack?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NTgzNWUwYmYxNmVhZTAwMTAwZTE0ZjNh.NgrFHZfxt_yeKIJ4tECwgFoAfVHO8OZFQM8S06Rk1Cg&type=cf-2)]( https://g.codefresh.io/repositories/doker78/docker_elk_stack/builds?filter=trigger:build;branch:master;service:5b8bd7ceab8f7b8214b4c11c~docker_elk_stack) 
  
     
@@ -60,13 +60,13 @@ Curator (latest)
 
 #### Requirements
 
-##### Host 
+##### on host 
 
 1. Install [Docker](https://www.docker.com/community-edition#/download) version **17.05+**
 2. Install [Docker Compose](https://docs.docker.com/compose/install/) version **1.6.0+**
 3. Clone this repository
 
-##### Increase `vm.max_map_count`
+##### increase `vm.max_map_count`
 
 One must increase the `vm.max_map_count` kernel setting on all Docker hosts running Elasticsearch in order to pass the [bootstrap checks](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html) triggered by the production mode.
 To do this follow the recommended instructions from the Elastic documentation: [Install Elasticsearch with Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode)
@@ -77,7 +77,7 @@ On distributions which have SELinux enabled out-of-the-box you will need to eith
 into Permissive mode in order for docker-elk to start properly
 
 
-##### Apparmor 
+##### apparmor 
 
 On distributions which have Apparmor service enables you will need to  remove the following service from you Docker host
 ```console
@@ -87,21 +87,21 @@ service docker restart
 docker system prune --all --volumes
 shutdown -r now
 ```
-#### Docker on Windows
+#### docker on windows
 
 If you're using  Windows, ensure the "Shared Drives" feature is enabled for the `C:` drive (Docker for Windows > Settings > Shared Drives)
 
 **NOTE**: Always pay attention to the [upgrade instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-upgrade.html)
 for each individual component before performing a stack upgrade.
 
-### Plugins and integrations
+### plugins and integrations
 
 See the following Wiki pages:
 
 * [External applications](https://github.com/deviantony/docker-elk/wiki/External-applications)
 * [Popular integrations](https://github.com/deviantony/docker-elk/wiki/Popular-integrations)
 
-#### Docker Swarm
+#### docker swarm
 
 Experimental support for Docker Swarm is provided in the form of a `docker-stack.yml` file, which can be deployed in an
 existing Swarm cluster using the following command:
@@ -173,7 +173,7 @@ elasticsearch:
 ```
 ## JVM tuning
 
-### How can I specify the amount of memory used by a service?
+#### specify the amount of memory used by a service?
 
 By default, both Elasticsearch and Logstash start with [1/4 of the total host
 memory](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html#default_heap_size) allocated to
@@ -197,7 +197,7 @@ logstash:
   environment:
     LS_JAVA_OPTS: "-Xmx1g -Xms1g"
 ```
-#### Enable a remote JMX connection to a service?
+#### enable a remote JMX connection to a service?
 
 As for the Java Heap memory (see above), you can specify JVM options to enable JMX and map the JMX port on the Docker
 host.
@@ -212,7 +212,7 @@ logstash:
   environment:
     LS_JAVA_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=18080 -Dcom.sun.management.jmxremote.rmi.port=18080 -Djava.rmi.server.hostname=DOCKER_HOST_IP -Dcom.sun.management.jmxremote.local.only=false"
 ```
-#### Restart a service with changes:
+#### restart a service with changes:
 
 ```console
 $ docker-compose stop -t 1 container_name       // go to hibernate
@@ -227,7 +227,7 @@ Follow the instructions from the Wiki: [Scaling out
 Elasticsearch](https://github.com/doker78/docker_elk_stack/wiki/Elasticsearch-cluster)
 
 
-#### Build and Run the Webapp with Kibana monitoring
+#### build and run the webapp with Kibana monitoring
 
 ```
 $ cd  webapp
@@ -240,7 +240,7 @@ $ docker run --network docker_elk_stack_logging --link redis:redis -p 80:80 -d -
 $ docker run --network docker_elk_stack_logging --restart always --link redis:redis -p 80:80 -d --name webapp dockerelkstack_webapp
  ```
 
-### Webapp Info
+### Webapp-JoliAdmin Info
 [Joli Admin](http://themifycloud.com/downloads/freee-responsive-bootstrap-joli-angular-js-admin-template-dashboard-web-app/) 
 is a free admin template/Dashboard/Web [WebApp](https://github.com/sbilly/joli-admin) based on Angular JS
  Then navigate on the site [AdminUI](http://localhost) port 80 for Access to Joli Admin UI
