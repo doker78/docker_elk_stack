@@ -86,6 +86,27 @@ $ apt-get purge --auto-remove apparmor
 $ service docker restart
 $ docker system prune --all --volumes
 $ shutdown -r now
+delete volumes
+$ docker volume rm $(docker volume ls -qf dangling=true)
+$ docker volume ls -qf dangling=true | xargs -r docker volume rm
+delete networks
+$ docker network ls | grep "bridge"   
+$ docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+
+docker network ls | awk '$3 == "bridge" && $2 != "bridge" { print $1 }'
+remove images
+$ docker images
+$ docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+
+$ docker images | grep "none"
+$ docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+remove containers
+$ docker ps
+$ docker ps -a
+$ docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+resize disk for vm
+$ docker-machine create --driver virtualbox --virtualbox-disk-size "40000" default
+
 ```
 #### docker on windows
 
