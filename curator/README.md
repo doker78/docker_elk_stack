@@ -1,5 +1,5 @@
 
-## [Curator](https://github.com/elastic/curator)
+### [Curator](https://github.com/elastic/curator)
 
 This is dockerized version of elasticsearch curator,tool to manage time-based indices.
 
