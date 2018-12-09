@@ -285,4 +285,5 @@ $ docker run --network docker_elk_stack_logging --link elastic:elasticsearch -v 
 <img src="https://raw.githubusercontent.com/doker78/docker_elk_stack/master/pics/kibana_logstash_visuals.png" width="400" height="200"/>   
   
   
-
+Thanks
+<iframe src="https://www.worldcommunitygrid.org/getDynamicImage.do?global=true&mnOn=false&stat=3&imageNum=1&rankOn=false&projectsOn=false&special=true&link=0&memberId=996777" frameborder="0" name="di" scrolling="no" width="405px" height="145px"></iframe>
