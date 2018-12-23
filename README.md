@@ -34,8 +34,7 @@
 #### [<img src="https://raw.githubusercontent.com/rtfd/readthedocs.org/master/media/images/favicon.ico" width="18"> Read the Docs](https://docker-elk-stack.readthedocs.io) 
 #### [<img src="https://raw.githubusercontent.com/travis-ci/docs-travis-ci-com/master/favicon.ico" width="18"> Travis-Ci](https://travis-ci.org/doker78/docker_elk_stack) 
 #### [<img src="https://codefresh.io//wp-content/themes/codefresh/images/favicon.ico" width="18"> Codefresh](https://g.codefresh.io/public/accounts/doker78/pipelines/doker78/docker_elk_stack/docker_elk_stack)     
-#### [<img src="https://raw.githubusercontent.com/docker/docker.github.io/master/favicon.ico" width="18"> DockerHub](https://hub.docker.com/r/doker78/docker_elk_stack/)<br/>
-<img src="pics/docker-build-ok.svg">
+#### [<img src="https://raw.githubusercontent.com/docker/docker.github.io/master/favicon.ico" width="18"> DockerHub](https://hub.docker.com/r/doker78/docker_elk_stack/)
 #### [<img src="https://github.com/favicon.ico" width="18"> Front End for Docker registry](https://github.com/brennerm/docker-registry-frontend)
 <img src="https://github.com/doker78/docker_elk_stack/blob/master/pics/architecture_design.jpeg">
 
