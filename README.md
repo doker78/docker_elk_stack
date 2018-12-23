@@ -1,7 +1,7 @@
 # Docker and webapp with ELK		
 
 [![](https://images.microbadger.com/badges/image/doker78/docker_elk_stack.svg)](https://microbadger.com/images/doker78/docker_elk_stack "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/doker78/docker_elk_stack.svg)](https://microbadger.com/images/doker78/docker_elk_stack "Get your own version badge on microbadger.com")
-
+[![Build Status](https://dev.azure.com/tiptoptip777/elk-stack/_apis/build/status/doker78.docker_elk_stack?branchName=master)](https://dev.azure.com/tiptoptip777/elk-stack/_build/latest?definitionId=1?branchName=master)
 ### [ELK](https://www.elastic.co/elk-stack) is a search engine which provide full text search & analytics
 [ELK Stack Features](https://www.elastic.co/products/stack)<br/>  	
 [Logstash](https://www.elastic.co/products/logstash), an ETL for retrieving data from heterogeneous sources, transforming them and sending them to Elasticsearch <br/>
