@@ -1,6 +1,10 @@
 # Docker and webapp with ELK		
 
 [![](https://images.microbadger.com/badges/image/doker78/docker_elk_stack.svg)](https://microbadger.com/images/doker78/docker_elk_stack "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/doker78/docker_elk_stack.svg)](https://microbadger.com/images/doker78/docker_elk_stack "Get your own version badge on microbadger.com")
+[![Build Status](https://dev.azure.com/tiptoptip777/elk-stack/_apis/build/status/doker78.docker_elk_stack?branchName=master)](https://dev.azure.com/tiptoptip777/elk-stack/_build/latest?definitionId=1?branchName=master)
+[![Build Status](https://travis-ci.org/doker78/docker_elk_stack.svg?branch=master)](https://travis-ci.org/doker78/docker_elk_stack)
+[![Documentation Status](https://readthedocs.org/projects/docker-elk-stack/badge/?version=master)](https://docker-elk-stack.readthedocs.io/?badge=master)
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/doker78/doker78%2Fdocker_elk_stack%2Fdocker_elk_stack?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NTgzNWUwYmYxNmVhZTAwMTAwZTE0ZjNh.NgrFHZfxt_yeKIJ4tECwgFoAfVHO8OZFQM8S06Rk1Cg&type=cf-2)]( https://g.codefresh.io/repositories/doker78/docker_elk_stack/builds?filter=trigger:build;branch:master;service:5b8bd7ceab8f7b8214b4c11c~docker_elk_stack) 
 
 ### [ELK](https://www.elastic.co/elk-stack) is a search engine which provide full text search & analytics
 [ELK Stack Features](https://www.elastic.co/products/stack)<br/>  	
@@ -28,26 +32,11 @@
 
 
 #### [<img src="https://raw.githubusercontent.com/rtfd/readthedocs.org/master/media/images/favicon.ico" width="18"> Read the Docs](https://docker-elk-stack.readthedocs.io) 
-[![Documentation Status](https://readthedocs.org/projects/docker-elk-stack/badge/?version=master)](https://docker-elk-stack.readthedocs.io/?badge=master)
-
- 
 #### [<img src="https://raw.githubusercontent.com/travis-ci/docs-travis-ci-com/master/favicon.ico" width="18"> Travis-Ci](https://travis-ci.org/doker78/docker_elk_stack) 
-[![Build Status](https://travis-ci.org/doker78/docker_elk_stack.svg?branch=master)](https://travis-ci.org/doker78/docker_elk_stack)
- 
-   
-#### [<img src="https://codefresh.io//wp-content/themes/codefresh/images/favicon.ico" width="18"> Codefresh](https://g.codefresh.io/public/accounts/doker78/pipelines/doker78/docker_elk_stack/docker_elk_stack)  
-[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/doker78/doker78%2Fdocker_elk_stack%2Fdocker_elk_stack?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NTgzNWUwYmYxNmVhZTAwMTAwZTE0ZjNh.NgrFHZfxt_yeKIJ4tECwgFoAfVHO8OZFQM8S06Rk1Cg&type=cf-2)]( https://g.codefresh.io/repositories/doker78/docker_elk_stack/builds?filter=trigger:build;branch:master;service:5b8bd7ceab8f7b8214b4c11c~docker_elk_stack) 
- 
-    
-#### [<img src="https://raw.githubusercontent.com/docker/docker.github.io/master/favicon.ico" width="18"> DockerHub](https://hub.docker.com/r/doker78/docker_elk_stack/)<br/>
-<img src="pics/docker-build-ok.svg">
-
-
+#### [<img src="https://codefresh.io//wp-content/themes/codefresh/images/favicon.ico" width="18"> Codefresh](https://g.codefresh.io/public/accounts/doker78/pipelines/doker78/docker_elk_stack/docker_elk_stack)     
+#### [<img src="https://raw.githubusercontent.com/docker/docker.github.io/master/favicon.ico" width="18"> DockerHub](https://hub.docker.com/r/doker78/docker_elk_stack/)
 #### [<img src="https://github.com/favicon.ico" width="18"> Front End for Docker registry](https://github.com/brennerm/docker-registry-frontend)
-
-
 <img src="https://github.com/doker78/docker_elk_stack/blob/master/pics/architecture_design.jpeg">
-
 
 #### List of containers version
 ```
@@ -285,4 +274,5 @@ $ docker run --network docker_elk_stack_logging --link elastic:elasticsearch -v 
 <img src="https://raw.githubusercontent.com/doker78/docker_elk_stack/master/pics/kibana_logstash_visuals.png" width="400" height="200"/>   
   
   
+Thanks
 

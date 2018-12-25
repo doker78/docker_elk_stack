@@ -1,8 +1,8 @@
 
 
-#### WebApp Admin UI - Joli Admin
+#### WebApp Admin UI - Joli Admin web template
 
-[<img src="https://github.com/favicon.ico" width="18"> GitHub ](https://github.com/sbilly/joli-admin)
+[<img src="https://github.com/favicon.ico" width="18"> GitHub Home ](https://github.com/sbilly/joli-admin)
 
 
 Joli is a admin template for Dashboard and Web App based on Angular JS  

@@ -46,7 +46,7 @@ services:
       - elasticsearch
   # indexer
   logstash:
-    image: logstash:latest
+    image: logstash:6.4.2
     container_name: logstash
     command: logstash -f /config/
     environment:
