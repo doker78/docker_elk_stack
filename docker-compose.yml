@@ -1,0 +1,70 @@
+version: "3.2"
+
+services:
+  # brocker
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redisdata:/data
+    networks:
+      - logging
+  # index, search & agregation
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.2
+    container_name: elastic
+    environment:
+      - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - cluster.name=docker-cluster
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - $PWD/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - "esdata:/usr/share/elasticsearch/data"
+    networks:
+      - logging
+  # UI
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.2
+    container_name: kibana
+    ports:
+      - 5601:5601
+    volumes:
+      - $PWD/kibana/config/kibana.yml:/etc/kibana/kibana.yml
+    networks:
+      - logging
+    depends_on:
+      - elasticsearch
+  # indexer
+  logstash:
+    image: logstash:6.4.2
+    container_name: logstash
+    command: logstash -f /config/
+    environment:
+      - JAVA_OPTS=-Xms512m -Xmx512m
+    volumes:
+      - $PWD/logstash/config:/config
+    networks:
+      - logging
+    depends_on:
+      - elasticsearch
+      - redis
+
+volumes:
+  esdata:
+    driver: local
+  redisdata:
+    driver: local
+
+networks:
+  logging:
+    driver: bridge

@@ -1,0 +1,15 @@
+[Unit]
+Description=Prometheus Server
+AssertPathExists=/opt/prometheus
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/prometheus
+User=prometheus
+Group=prometheus
+ExecStart=/opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml --log.level=info
+ExecReload=/bin/kill -SIGHUP $MAINPID
+ExecStop=/bin/kill -SIGINT $MAINPID
+
+[Install]
+WantedBy=multi-user.target

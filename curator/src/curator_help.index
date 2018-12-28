@@ -1,0 +1,46 @@
+
+usage: curator.py [-h] [-v] [--host HOST] [--port PORT] [-t TIMEOUT]
+                  [-p PREFIX] [-s SEPARATOR] [-C CURATION_STYLE]
+                  [-T TIME_UNIT] [-d DELETE_OLDER] [-c CLOSE_OLDER]
+                  [-b BLOOM_OLDER] [-g DISK_SPACE]
+                  [--max_num_segments MAX_NUM_SEGMENTS] [-o OPTIMIZE] [-n]
+                  [-D] [-l LOG_FILE]
+Curator for Elasticsearch indices. Can delete (by space or time), close,
+disable bloom filters and optimize (forceMerge) your indices.
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program version number and exit
+  --host HOST           Elasticsearch host. Default: localhost
+  --port PORT           Elasticsearch port. Default: 9200
+  -t TIMEOUT, --timeout TIMEOUT
+                        Elasticsearch timeout. Default: 30
+  -p PREFIX, --prefix PREFIX
+                        Prefix for the indices. Indices that do not have this
+                        prefix are skipped. Default: logstash-
+  -s SEPARATOR, --separator SEPARATOR
+                        Time unit separator. Default: .
+  -C CURATION_STYLE, --curation-style CURATION_STYLE
+                        Curate indices by [time, space] Default: time
+  -T TIME_UNIT, --time-unit TIME_UNIT
+                        Unit of time to reckon by: [days, hours] Default: days
+  -d DELETE_OLDER, --delete DELETE_OLDER
+                        Delete indices older than n TIME_UNITs.
+  -c CLOSE_OLDER, --close CLOSE_OLDER
+                        Close indices older than n TIME_UNITs.
+  -b BLOOM_OLDER, --bloom BLOOM_OLDER
+                        Disable bloom filter for indices older than n
+                        TIME_UNITs.
+  -g DISK_SPACE, --disk-space DISK_SPACE
+                        Delete indices beyond n GIGABYTES.
+  --max_num_segments MAX_NUM_SEGMENTS
+                        Maximum number of segments, post-optimize. Default: 2
+  -o OPTIMIZE, --optimize OPTIMIZE
+                        Optimize (Lucene forceMerge) indices older than n
+                        TIME_UNITs. Must increase timeout to stay connected
+                        throughout optimize operation, recommend no less than
+                        3600.
+  -n, --dry-run         If true, does not perform any changes to the
+                        Elasticsearch indices.
+  -D, --debug           Debug mode
+  -l LOG_FILE, --logfile LOG_FILE
+                        log file
