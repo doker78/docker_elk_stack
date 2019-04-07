@@ -70,8 +70,10 @@ into Permissive mode in order for docker-elk to start properly
 
 On distributions which have Apparmor service enables you will need to  remove the following service from you Docker host
 ```console
+remove and disable apparmor
 $ systemctl stop apparmor && systemctl disable apparmor
 $ apt-get purge --auto-remove apparmor
+restart docker and remove all images and reboot the server
 $ service docker restart
 $ docker system prune --all --volumes
 $ shutdown -r now
